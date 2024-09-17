@@ -1,0 +1,38 @@
+// Function
+
+function sayHello(){
+    console.log("Hey User")
+}
+
+sayHello() // Function Call
+sayHello()
+
+
+// Parameter -> num1 , num2 , these are the placeholders for the actual values
+function add(num1, num2){
+    // console.log(num1+num2)
+    return (num1+num2)
+}
+
+console.log(add(3,4))// Arguments -> 3, 4 , these are the actual values
+
+// for unlimited arguments
+function addNumberV1(){
+    let result = 0;
+    for(let i=0; i<arguments.length; i++){
+        result += arguments[i]
+    }
+    return result
+}
+
+// spread operator ...
+function addNumberV2(...nums){
+    let result = 0;
+    for(let i=0; i<nums.length; i++){
+        result += nums[i]
+    }
+    return result
+}
+
+console.log(addNumberV1(1,2,3,4,5,6,7,8,9,10))
+console.log(addNumberV2(1,2,3,4,5,6,7,8,9,10))
