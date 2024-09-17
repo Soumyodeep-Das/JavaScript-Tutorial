@@ -34,15 +34,25 @@ p.forEach((ele) => {
     // console.log(ele.innerHTML)
 })
 
-const ele = document.getElementById("username")
+// const ele = document.getElementById("username")
 // console.log(ele.innerText = "SDas")
-ele.classList.remove("blue-color")
-ele.classList.add("red-color")
-ele.style.textDecoration = "underline"
-ele.style.color = "tomato"
-ele.parentElement.style.backgroundColor = "lightyellow"
-console.log(ele.id)
-ele.setAttribute("area", "123")
-console.log(ele.classList)
+// ele.classList.remove("blue-color")
+// ele.classList.add("red-color")
+// ele.style.textDecoration = "underline"
+// ele.style.color = "tomato"
+// ele.parentElement.style.backgroundColor = "lightyellow"
+// console.log(ele.id)
+// ele.setAttribute("area", "123")
+// console.log(ele.classList)
 
-ele.remove() // remove the whole element
+// ele.remove() // remove the whole element
+
+const ele = document.getElementsByClassName("block")
+
+// console.log(ele)
+
+for(let i=0; i<ele.length; i++){
+    if (ele.item(i).tagName.toLowerCase() == 'div'){
+        ele.item(i).style.background = "lightblue"
+    }
+}
