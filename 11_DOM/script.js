@@ -31,5 +31,18 @@ const div = document.querySelector("div")
 
 const p = document.querySelectorAll("p")
 p.forEach((ele) => {
-    console.log(ele.innerHTML)
+    // console.log(ele.innerHTML)
 })
+
+const ele = document.getElementById("username")
+// console.log(ele.innerText = "SDas")
+ele.classList.remove("blue-color")
+ele.classList.add("red-color")
+ele.style.textDecoration = "underline"
+ele.style.color = "tomato"
+ele.parentElement.style.backgroundColor = "lightyellow"
+console.log(ele.id)
+ele.setAttribute("area", "123")
+console.log(ele.classList)
+
+ele.remove() // remove the whole element
