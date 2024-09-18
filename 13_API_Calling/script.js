@@ -18,7 +18,7 @@ const elements = {
 };
 
 const API_KEY = '77845435e2ad47bbacd183308241709';
-const BASE_URL = 'http://api.weatherapi.com/v1/current.json';
+const BASE_URL = 'https://api.weatherapi.com/v1/current.json';
 
 async function getWeatherData(query) {
   const response = await fetch(`${BASE_URL}?key=${API_KEY}&q=${query}&aqi=yes`);
