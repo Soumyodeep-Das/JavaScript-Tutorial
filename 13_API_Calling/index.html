@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>API Calling</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- Weather APP -->
@@ -13,7 +13,7 @@
       <button id="searchButton">Search</button>
       <button id="currentLocationBtn">Current Location</button>
     </div>
-    <div>
+    <div class="container">
       <span>
         <h3>
           <span id="city-name">Kolkata</span>,
@@ -25,21 +25,23 @@
       <h4 id="localtime">localtime</h4>
       <h5 id="tz">Asia/Kolkata</h5>
 
-      <ul id="temp_c">
-        Temparature :
-      </ul>
-      <ul id="feelslike_c">
-        Feels Like :
-      </ul>
-      <ul id="heatindex_c">
-        Heat Index :
-      </ul>
-      <ul id="humidity">
-        Humidity :
-      </ul>
-      <ul id="wind_kph">
-        Wind :
-      </ul>
+      <div class="weather-details">
+        <ul id="temp_c">
+          Temparature :
+        </ul>
+        <ul id="feelslike_c">
+          Feels Like :
+        </ul>
+        <ul id="heatindex_c">
+          Heat Index :
+        </ul>
+        <ul id="humidity">
+          Humidity :
+        </ul>
+        <ul id="wind_kph">
+          Wind :
+        </ul>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>

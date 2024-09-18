@@ -1,71 +1,59 @@
 // Weather App
 
-const cityName = document.getElementById("city-name");
-const region = document.getElementById("city-region");
-const country = document.getElementById("city-country");
-const localtime = document.getElementById("localtime");
-const tz = document.getElementById("tz");
-const feelslike_c = document.getElementById("feelslike_c");
-const heatindex_c = document.getElementById("heatindex_c");
-const humidity = document.getElementById("humidity");
-const temp_c = document.getElementById("temp_c");
-const wind_kph = document.getElementById("wind_kph");
-const icon = document.getElementById("icon");
+const elements = {
+  cityName: document.getElementById("city-name"),
+  region: document.getElementById("city-region"),
+  country: document.getElementById("city-country"),
+  localtime: document.getElementById("localtime"),
+  tz: document.getElementById("tz"),
+  feelslike_c: document.getElementById("feelslike_c"),
+  heatindex_c: document.getElementById("heatindex_c"),
+  humidity: document.getElementById("humidity"),
+  temp_c: document.getElementById("temp_c"),
+  wind_kph: document.getElementById("wind_kph"),
+  icon: document.getElementById("icon"),
+  searchButton: document.getElementById("searchButton"),
+  city: document.getElementById("city-input"),
+  currentLocationBtn: document.getElementById("currentLocationBtn")
+};
 
-const searchButton = document.getElementById("searchButton");
-const city = document.getElementById("city-input");
-const currentLocationBtn = document.getElementById("currentLocationBtn");
+const API_KEY = '77845435e2ad47bbacd183308241709';
+const BASE_URL = 'http://api.weatherapi.com/v1/current.json';
 
-async function getWeatherDataByCoordinates(lat, long) {
-  const promiseData = await fetch(
-    `http://api.weatherapi.com/v1/current.json?key=77845435e2ad47bbacd183308241709&q=${lat},${long}&aqi=yes`
-  );
-  return promiseData.json();
+async function getWeatherData(query) {
+  const response = await fetch(`${BASE_URL}?key=${API_KEY}&q=${query}&aqi=yes`);
+  return response.json();
 }
 
-async function getWeatherData(cityName) {
-  const promiseData = await fetch(
-    `http://api.weatherapi.com/v1/current.json?key=77845435e2ad47bbacd183308241709&q=${cityName}&aqi=yes`
-  );
-  return promiseData.json();
+function updateWeatherInfo(result) {
+  elements.cityName.innerText = result.location.name;
+  elements.region.innerText = result.location.region;
+  elements.country.innerText = result.location.country;
+  elements.localtime.innerText = `Time: ${result.location.localtime}`;
+  elements.tz.innerText = result.location.tz_id;
+  elements.feelslike_c.innerText = `Feels Like: ${result.current.feelslike_c}°C`;
+  elements.heatindex_c.innerText = `Heat Index: ${result.current.heatindex_c}°C`;
+  elements.humidity.innerText = `Humidity: ${result.current.humidity}`;
+  elements.temp_c.innerText = `Temperature: ${result.current.temp_c}°C`;
+  elements.wind_kph.innerText = `Wind: ${result.current.wind_kph} KPH`;
+  elements.icon.innerHTML = `<img style="background-color: black; width: 100px; height: 100px;" src=${result.current.condition.icon}>`;
 }
 
-function assignLocationVariableFromQuery(result) {
-  cityName.innerText = result.location.name;
-  region.innerText = result.location.region;
-  country.innerText = result.location.country;
-  // localtime.innerText = `Time: ${result.location.localtime}`
-  // tz.innerText = result.location.tz_id
-  feelslike_c.innerText = `Feels Like : ${result.current.feelslike_c}°C`;
-  heatindex_c.innerText = `Heat Index : ${result.current.heatindex_c}°C`;
-  humidity.innerText = `Humidity : ${result.current.humidity}`;
-  temp_c.innerText = `Temparature : ${result.current.temp_c}°C`;
-  wind_kph.innerText = `Wind : ${result.current.wind_kph}KPH`;
-  icon.innerHTML = `<img style="background-color: black; width: 100px; height: 100px;" src=${result.current.condition.icon}>`;
-}
-
-currentLocationBtn.addEventListener("click", async () => {
+elements.currentLocationBtn.addEventListener("click", () => {
   navigator.geolocation.getCurrentPosition(
     async (position) => {
-      console.log("Got the Location");
-
-      // const lat = 22.5744
-      const lat = position.coords.latitude;
-      // const long = 88.3629
-      const long = position.coords.longitude;
-      const result = await getWeatherDataByCoordinates(lat, long);
-      console.log(result);
-      assignLocationVariableFromQuery(result);
+      const { latitude, longitude } = position.coords;
+      const result = await getWeatherData(`${latitude},${longitude}`);
+      updateWeatherInfo(result);
     },
     () => {
-      console.log("Failed to get Location");
+      alert('Unable to fetch user location\nCheck if location permission is granted.');
     }
   );
 });
 
-searchButton.addEventListener("click", async () => {
-  const value = city.value;
-  const result = await getWeatherData(value);
-  assignLocationVariableFromQuery(result);
-  console.log(result);
+elements.searchButton.addEventListener("click", async () => {
+  const query = elements.city.value;
+  const result = await getWeatherData(query);
+  updateWeatherInfo(result);
 });
