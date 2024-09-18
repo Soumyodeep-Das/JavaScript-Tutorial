@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clock</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1 id="time">Time</h1>
+      <div class="clock">
+        <h1 id="current-time">Time</h1>
         <button id="stop-time">Stop Clock</button>
+      </div>
+      <div class="stopwatch">
+        <h1 id="stopwatch-time">StopWatch</h1>
+        <button id="start-stopwatch">Start</button>
+        <button id="reset-stopwatch">Reset</button>
+        <button id="stop-stopwatch">Stop</button>
+      </div>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
