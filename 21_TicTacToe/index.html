@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TicTacToe</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: darkslategray;
+        }
+      .row {
+        display: flex;
+      }
+      .col {
+        height: 50px;
+        width: 50px;
+        border: 1px solid aliceblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+      }
+      #header {
+        color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <h1 id="header">TicTacToe</h1>
+      <div class="grid">
+        <div class="row">
+          <div id="0" class="col" onclick="handleClick(this)"></div>
+          <div id="1" class="col" onclick="handleClick(this)"></div>
+          <div id="2" class="col" onclick="handleClick(this)"></div>
+        </div>
+        <div class="row">
+          <div id="3" class="col" onclick="handleClick(this)"></div>
+          <div id="4" class="col" onclick="handleClick(this)"></div>
+          <div id="5" class="col" onclick="handleClick(this)"></div>
+        </div>
+        <div class="row">
+          <div id="6" class="col" onclick="handleClick(this)"></div>
+          <div id="7" class="col" onclick="handleClick(this)"></div>
+          <div id="8" class="col" onclick="handleClick(this)"></div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
