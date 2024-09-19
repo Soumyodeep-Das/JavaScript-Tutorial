@@ -14,6 +14,9 @@ function checkWinner() {
   ) {
     // alert(currentPlayer + " is Winner");
     document.write(`Winner is : ${currentPlayer}`);
+    setInterval(()=>{
+        location.reload()
+    }, 5000)
     return;
   } 
   else {
