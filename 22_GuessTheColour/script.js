@@ -4,9 +4,12 @@ const btnTwo = document.getElementById("btnTwo");
 const btnThree = document.getElementById("btnThree");
 const btnFour = document.getElementById("btnFour");
 const result = document.getElementById("result");
+const score = document.getElementById("score");
 
 let colourCode = "";
 let colourArray = Array(4);
+
+let currentScore = 0;
 
 const generateColourCode = () => {
   /**
@@ -26,6 +29,11 @@ const initializeColourBlocks = () => {
   }
   colourCode = colourArray[randomBtnColourAssign()];
   code.innerText = colourCode;
+
+  btnOne.style.backgroundColor = `#${colourArray[0]}`;
+  btnTwo.style.backgroundColor = `#${colourArray[1]}`;
+  btnThree.style.backgroundColor = `#${colourArray[2]}`;
+  btnFour.style.backgroundColor = `#${colourArray[3]}`;
 };
 
 const randomBtnColourAssign = () => {
@@ -35,52 +43,41 @@ const randomBtnColourAssign = () => {
   return index;
 };
 
-const autoReloadTheGame = () => {
-  setInterval(() => {
-    location.reload();
-  }, 2000);
-};
-initializeColourBlocks();
-
-btnOne.style.backgroundColor = `#${colourArray[0]}`;
-btnTwo.style.backgroundColor = `#${colourArray[1]}`;
-btnThree.style.backgroundColor = `#${colourArray[2]}`;
-btnFour.style.backgroundColor = `#${colourArray[3]}`;
-
 console.log(colourArray);
 console.log(colourCode);
+
 btnOne.addEventListener("click", () => {
-  if (colourArray[0] === colourCode) {
-    result.innerText = "You Guessed The Right Colour!!";
-    autoReloadTheGame();
-  } else {
-    result.innerText = "Incorrect!! Try Again :(";
-  }
+  btnLogic(0);
 });
 
 btnTwo.addEventListener("click", () => {
-  if (colourArray[1] === colourCode) {
-    result.innerText = "You Guessed The Right Colour!!";
-    autoReloadTheGame();
-  } else {
-    result.innerText = "Incorrect!! Try Again :(";
-  }
+  btnLogic(1);
 });
 
 btnThree.addEventListener("click", () => {
-  if (colourArray[2] === colourCode) {
-    result.innerText = "You Guessed The Right Colour!!";
-    autoReloadTheGame();
-  } else {
-    result.innerText = "Incorrect!! Try Again :(";
-  }
+  btnLogic(2);
 });
 
 btnFour.addEventListener("click", () => {
-  if (colourArray[3] === colourCode) {
+  btnLogic(3);
+});
+
+function btnLogic(index) {
+  if (colourArray[index] === colourCode) {
     result.innerText = "You Guessed The Right Colour!!";
-    autoReloadTheGame();
+    currentScore++;
   } else {
     result.innerText = "Incorrect!! Try Again :(";
+    currentScore = 0;
   }
-});
+  localStorage.setItem("gameScore", currentScore);
+  startGame();
+}
+
+function startGame() {
+  score.innerText = Number(localStorage.getItem("gameScore"));
+  initializeColourBlocks();
+}
+
+// Entry point of the game
+startGame();
