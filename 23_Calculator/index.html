@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="header">Calculator</h1>
+        <div id="outerbody">
+            <div id="displayScreen">
+                <span id="result"></span>
+            </div>
+            <div class="grid">
+                <div class="row">
+                    <div id="AC" class="col" onclick="handleClick(this)">AC</div>
+                    <div id="X" class="col" onclick="handleClick(this)">X</div>
+                    <div id="sign" class="col" onclick="handleClick(this)">+/-</div>
+                    <div id="div" class="col" onclick="handleClick(this)">/</div>
+                </div>
+                <div class="row">
+                    <div id="7" class="col" onclick="handleClick(this)">7</div>
+                    <div id="8" class="col" onclick="handleClick(this)">8</div>
+                    <div id="9" class="col" onclick="handleClick(this)">9</div>
+                    <div id="mul" class="col" onclick="handleClick(this)">*</div>
+                </div>
+                <div class="row">
+                    <div id="4" class="col" onclick="handleClick(this)">4</div>
+                    <div id="5" class="col" onclick="handleClick(this)">5</div>
+                    <div id="6" class="col" onclick="handleClick(this)">6</div>
+                    <div id="sub" class="col" onclick="handleClick(this)">-</div>
+                </div>
+                <div class="row">
+                    <div id="1" class="col" onclick="handleClick(this)">1</div>
+                    <div id="2" class="col" onclick="handleClick(this)">2</div>
+                    <div id="3" class="col" onclick="handleClick(this)">3</div>
+                    <div id="add" class="col" onclick="handleClick(this)">+</div>
+                </div>
+                <div class="row">
+                    <div id="per" class="col" onclick="handleClick(this)">%</div>
+                    <div id="0" class="col" onclick="handleClick(this)">0</div>
+                    <div id="dec" class="col" onclick="handleClick(this)">.</div>
+                    <div id="equal" class="col" onclick="handleClick(this)">=</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
